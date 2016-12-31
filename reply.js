@@ -4,7 +4,7 @@ var router = express.Router();
 var lineBot = require('line-bot-sdk');
 var cfg = require('./config.json');
 
-var client = LineBot.client({cfg});
+var client = lineBot.client({cfg});
 
 router.get('/',function(req, res){
    res.json({resCode : 200, resMsg : "Success"}); 
