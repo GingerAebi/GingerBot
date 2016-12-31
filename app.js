@@ -7,7 +7,7 @@ var app = express();
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/reply', reply)
+app.use('/', reply)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
