@@ -2,6 +2,16 @@ var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser');
 var reply = require('./reply');
+
+var fs = require('fs');
+var https = require('https');
+
+var options = {
+   key  : fs.readFileSync('./secure/server.key'),
+   cert : fs.readFileSync('./secure/server.crt')
+};
+
+
 var app = express();
 
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -20,7 +30,7 @@ app.use(function(err, req, res) {
 });
 
 app.set('port', 3000);
-var server = http.createServer(app);
+var server = https.createServer(options,app);
 server.timeout = 5000;
 
 server.listen(app.get('port'), function() {
