@@ -17,6 +17,8 @@ router.get('/',function(req, res){
 });
 
 router.post('/webhook',function (req, res) {
+    console.log('webhook start');
+    
     const promises = req.body.events.map(event => {
     // reply message
     return line.client
